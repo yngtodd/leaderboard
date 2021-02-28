@@ -1,4 +1,6 @@
 from login import user_login
+from submission import submit
+
 from config import (
     banner, load_competition_data
 )
@@ -6,8 +8,9 @@ from config import (
 
 def main():
     banner()
-    user_login()
-    load_competition_data()
+    user = user_login()
+    data, config = load_competition_data()
+    submit(user, data, config)
 
 
 

@@ -1,6 +1,8 @@
 import os
 import json
+import toml
 
+import pandas as pd
 import streamlit as st
 
 
@@ -11,12 +13,27 @@ def banner():
 def load_competition_data():
     files = os.listdir("competition")
 
-    if "competition_data.csv" not in files or "config.json" not in files:
+    if "data.csv" not in files or "config.json" not in files:
         st.sidebar.text("Admin please add competition data.")
     else:
-        test_data = pd.read_csv("competition/data.csv")
-        with open("competition/config.json") as f:
-            config = json.load(f)
+        data = pd.read_csv("competition/data.csv")
+        with open("competition/config.toml") as f:
+            config = toml.load(f)
+
+        competition = config['competition_type']
+        metric = config['metric_type']
+        idx = config['index']
+        target = config['target']
+
+        st.sidebar.subheader("Competition Details")
+        #st.balloons()
+
+        st.sidebar.info(
+            f"Type: {competition} "
+            f"Metric: {metric} "
+            f"Index column: {idx} "
+            f"Target column: {target}"
+        )
 
         return data, config
 

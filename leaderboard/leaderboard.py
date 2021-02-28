@@ -3,6 +3,13 @@ import pandas as pd
 from datetime import datetime
 
 
+def show_leaderboard():
+    if os.stat("leaderboard.csv").st_size == 0:
+        st.text("No submissions yet")
+    else:
+        board = get_leaderboard()
+
+
 def get_leaderboard(greater_is_better=True):
     """Get the current leaderboard
 
