@@ -1,4 +1,7 @@
+import os
+
 import pandas as pd
+import streamlit as st
 
 from datetime import datetime
 
@@ -8,6 +11,7 @@ def show_leaderboard():
         st.text("No submissions yet")
     else:
         board = get_leaderboard()
+        st.dataframe(board)
 
 
 def get_leaderboard(greater_is_better=True):
@@ -47,17 +51,17 @@ def relative_time(time_diff):
         time_diff: the difference between two datetime
         times.
     """
-    days, seconds = time_diff.days, time_diff.senconds
+    days, seconds = time_diff.days, time_diff.seconds
 
     if days > 0:
         return f"{days}d"
     else:
         hours = time_diff.seconds // 3600
-        mins = time_diff.seconds // 60
+        minutes = time_diff.seconds // 60
         if hours > 0:
             return f"{hours}h"
         elif minutes > 0:
-            return f"{mins}m"
+            return f"{minutes}m"
         else:
             return f"{seconds}s"
 

@@ -20,8 +20,8 @@ def load_competition_data():
         with open("competition/config.toml") as f:
             config = toml.load(f)
 
-        competition = config['competition_type']
-        metric = config['metric_type']
+        competition = config['competition']
+        metric = config['metric']
         idx = config['index']
         target = config['target']
 

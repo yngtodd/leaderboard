@@ -1,6 +1,9 @@
+import pandas as pd
 import streamlit as st
 
+from pathlib import Path
 from datetime import datetime
+
 from sklearn.metrics import (
     accuracy_score, auc, f1_score, precision_score, recall_score
 )
@@ -48,7 +51,7 @@ def compute_score(submission, data, config):
         data[f"{target}_x"], data[f"{target}_y"]
     )
 
-    st.info(f"Your submission score {score:.5f}")
+    st.info(f"Your submission score: {score:.5f}")
 
     return score
 
