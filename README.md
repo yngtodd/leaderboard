@@ -20,6 +20,26 @@ Typically, leaderboard admins provide a sample submission with random prediction
 that users can inspect the shape of the expected submission and check that the index
 column entries match those of the test set they are predicting on. 
 
+
+### Current Design
+
+The leaderboard runs locally. The test set labels and all submissions are stored on the
+file system as `.csv` files, and there is no authentication of users. This means anyone can
+make a submission on anyone else's name (see what I mean by no guard rails?). This can
+be resolved by using a database and user authentication on the website. Beyond this alpha
+proof of concept, this would be necessary.
+
+Binary classification is currently supported. Adding multitask classification would be a simple
+addition with the caveat that we would need to decide how to compare two models when they differ
+in performance across the tasks.
+
+
+### Next Steps
+
+Setting up a simple database like `sqlite` and user authentication would mean that we could 
+host this site via GitHub or GitLab.
+
+
 #### Features
 
 Leaderboard comes with a built in command line interface:
