@@ -1,8 +1,6 @@
 <h1>Leaderboard<img src='https://github.com/yngtodd/leaderboard/blob/main/img/snek.png' align='right' width='180' height='104'></h1>
 
 
-A prototype leaderboard for Pilot3.
-
 **Note**: This project is an alpha phase, proof of concept leaderboard! There are no 
 guard rails here.
 
