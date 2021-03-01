@@ -80,7 +80,7 @@ def score_density(leaderboard):
             )
 
     fig = ff.create_distplot(
-        scores, users
+        scores, users, curve_type="normal"
     )
 
     return fig
