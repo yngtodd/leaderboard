@@ -40,6 +40,12 @@ Setting up a simple database like `sqlite` and user authentication would mean th
 host this site via GitHub or GitLab.
 
 
+### Usage
+
+```
+streamlit run leaderboard/app.py
+```
+
 #### Features
 
 Leaderboard comes with a built in command line interface:

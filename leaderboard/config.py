@@ -1,5 +1,4 @@
 import os
-import json
 import toml
 
 import pandas as pd
@@ -10,14 +9,13 @@ def banner():
     st.title("Pilot3 Leaderboard")
 
 
-def load_competition_data():
-    files = os.listdir("competition")
+def load_config():
+    files = os.listdir("config")
 
-    if "data.csv" not in files or "config.toml" not in files:
+    if "config.toml" not in files:
         st.sidebar.text("Admin please add competition data.")
     else:
-        data = pd.read_csv("competition/data.csv")
-        with open("competition/config.toml") as f:
+        with open("config/config.toml") as f:
             config = toml.load(f)
 
         competition = config['competition']
@@ -34,4 +32,15 @@ def load_competition_data():
             f"Target column: {target}"
         )
 
-        return data, config
+        return config
+
+
+def load_competition_data():
+    files = os.listdir("config")
+
+    if "data.csv" not in files:
+        st.sidebar.text("Admin please add competition data.")
+    else:
+        data = pd.read_csv(f"config/data.csv")
+
+        return data

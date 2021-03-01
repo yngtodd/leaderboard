@@ -3,14 +3,15 @@ from submission import submit
 from leaderboard import show_leaderboard
 
 from config import (
-    banner, load_competition_data
+    banner, load_competition_data, load_config
 )
 
 
 def main():
     banner()
     user = user_login()
-    data, config = load_competition_data()
+    config = load_config()
+    data = load_competition_data()
     submit(user, data, config)
     show_leaderboard()
 

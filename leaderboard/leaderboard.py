@@ -18,7 +18,8 @@ def show_leaderboard():
             board.style.highlight_max(axis=0)
         )
 
-        st.plotly_chart(density, use_container_width=True)
+        if density:
+            st.plotly_chart(density, use_container_width=True)
 
 
 def get_leaderboard(greater_is_better=True):
@@ -79,11 +80,14 @@ def score_density(leaderboard):
                 user["Score"]
             )
 
-    fig = ff.create_distplot(
-        scores, users, curve_type="normal"
-    )
+    if any_scores_greater_than_one(scores):
+        fig = ff.create_distplot(
+            scores, users, curve_type="normal"
+        )
 
-    return fig
+        return fig
+
+    return None
 
 
 def is_unique(scores):
@@ -110,6 +114,19 @@ def check_density_ok(user_data):
     more_than_one_score = len(user_data["Score"]) > 1
     unique = is_unique(user_data["Score"])
     return more_than_one_score and not unique
+
+
+def any_scores_greater_than_one(scores):
+    """Check if there are enough scores for KDE
+
+    If there are more than scores for at least one user,
+    we plot the density estimate of scores
+    """
+    for score in scores:
+        if len(score) > 1:
+            return True
+
+    return False
 
 
 def relative_time(time_diff):

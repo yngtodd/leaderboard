@@ -1,6 +1,0 @@
-"competition" = "Binary Classification"
-"metric" = "F1"
-"index" = "PassengerId"
-"target" = "Survived"
-"submission_directory" = "submissions"
-
