@@ -51,6 +51,7 @@ def compute_score(submission, data, config):
         data[f"{target}_x"], data[f"{target}_y"]
     )
 
+    st.balloons()
     st.info(f"Your submission score: {score:.5f}")
 
     return score

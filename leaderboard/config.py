@@ -13,7 +13,7 @@ def banner():
 def load_competition_data():
     files = os.listdir("competition")
 
-    if "data.csv" not in files or "config.json" not in files:
+    if "data.csv" not in files or "config.toml" not in files:
         st.sidebar.text("Admin please add competition data.")
     else:
         data = pd.read_csv("competition/data.csv")
@@ -26,7 +26,6 @@ def load_competition_data():
         target = config['target']
 
         st.sidebar.subheader("Competition Details")
-        #st.balloons()
 
         st.sidebar.info(
             f"Type: {competition} "
@@ -36,5 +35,3 @@ def load_competition_data():
         )
 
         return data, config
-
-

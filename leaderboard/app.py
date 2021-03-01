@@ -15,6 +15,5 @@ def main():
     show_leaderboard()
 
 
-
 if __name__=="__main__":
     main()
