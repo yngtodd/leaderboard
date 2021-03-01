@@ -9,7 +9,7 @@ from datetime import datetime
 
 
 def show_leaderboard():
-    if os.stat("leaderboard.csv").st_size == 0:
+    if not os.path.isfile('leaderboard.csv'):
         st.text("No submissions yet")
     else:
         board, density = get_leaderboard()
@@ -31,7 +31,11 @@ def get_leaderboard(greater_is_better=True):
         accuracy, this should be True. Otherwise, the better
         models minimize their score.
     """
-    board = pd.read_csv("leaderboard.csv", header=None)
+    try:
+        board = pd.read_csv("leaderboard.csv", header=None)
+    except:
+        board = pd.DataFrame()
+
     board.columns = ["Username", "Score", "Submission Time"]
     board["counter"] = 1
 
