@@ -3,4 +3,3 @@
 "index" = "PassengerId"
 "target" = "Survived"
 "submission_directory" = "submissions"
-
